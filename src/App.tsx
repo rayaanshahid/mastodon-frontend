@@ -1,26 +1,47 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useEffect, useState } from "react";
 import './App.css';
 
+interface Post {
+  id: string;
+  content: string;
+}
+
 function App() {
+  const [posts, setPosts] = useState<Post[]>([]);
+
+  useEffect(() => {
+    const ws = new WebSocket("ws://localhost:8000/ws");
+
+    ws.onopen = () => {
+      console.log("Connected to WebSocket");
+    };
+
+    ws.onmessage = (event) => {
+      const post: Post = JSON.parse(event.data);
+      setPosts((prevPosts) => [post, ...prevPosts]);
+    };
+
+    ws.onerror = (error) => {
+      console.error("WebSocket error:", error);
+    };
+
+    ws.onclose = () => {
+      console.log("WebSocket connection closed");
+    };
+
+    return () => ws.close();
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="Posts">
+      <ul>
+        {posts.map((post) => (
+          <li key={post.id} dangerouslySetInnerHTML={{ __html: post.content }} />
+        ))}
+      </ul>
     </div>
   );
 }
 
 export default App;
+
