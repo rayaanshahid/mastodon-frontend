@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
+import WebSocket from './components/websocket/websocket';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(
@@ -9,10 +9,10 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <div className='App-header'>
+    <div className='websocket-header'>
     <h1>Live Mastodon Posts</h1>
     </div>
-    <App />
+    <WebSocket />
   </React.StrictMode>
 );
 

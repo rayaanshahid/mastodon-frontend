@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import './App.css';
+import './websocket.css';
 
 interface Post {
   id: string;
   content: string;
 }
 
-function App() {
+function Websocket() {
   const [posts, setPosts] = useState<Post[]>([]);
 
   useEffect(() => {
@@ -43,5 +43,5 @@ function App() {
   );
 }
 
-export default App;
+export default Websocket;
 
