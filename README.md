@@ -15,7 +15,7 @@ This project streams public Mastodon posts in real-time and displays them on a w
 
 1. Clone the repository:
 
-git clone https://github.com/yourusername/mastodon-live-stream.git cd mastodon-live-stream
+git clone https://github.com/rayaanshahid/mastodon-frontend.git cd mastodon-frontend
 
 2. Build and run the application using Docker Compose:
 
@@ -36,7 +36,7 @@ Both services are containerized using Docker and orchestrated with Docker Compos
 
 ## CI/CD
 
-Continuous Integration is set up using GitHub Actions to automatically build and test the application on every push to the main branch.
+Continuous Integration will be set up using GitHub Actions to automatically build and test the application on every push to the main branch.
 
 ## Contributing
 
